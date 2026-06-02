@@ -57,6 +57,65 @@ $ pnpm run test:e2e
 $ pnpm run test:cov
 ```
 
+## Coding Standards & Git Hooks
+
+This project enforces strict coding standards and automated verification using ESLint, Prettier, Husky, and Commitlint.
+
+Dự án áp dụng quy chuẩn code nghiêm ngặt và xác thực tự động thông qua ESLint, Prettier, Husky, và Commitlint.
+
+### 1. Linting & Formatting
+
+You can run static analysis and code formatting manually:
+*Bạn có thể tự chạy phân tích tĩnh và định dạng mã nguồn bằng tay:*
+
+```bash
+# Run ESLint check & auto-fix
+$ pnpm run lint
+
+# Run Prettier format
+$ pnpm run format
+```
+
+### 2. Git Hooks (Husky & lint-staged)
+
+Git hooks are automated using Husky to ensure only clean code is committed:
+*Git hooks được cấu hình tự động qua Husky để đảm bảo chỉ có code sạch mới được commit:*
+
+- **`pre-commit`**: Automatically runs `lint-staged` on your staged files to auto-fix ESLint issues and format your code before committing.
+  *Tự động chạy `lint-staged` trên các file đang stage để tự sửa lỗi ESLint và format lại code trước khi ghi nhận.*
+
+### 3. Commit Message Standards (Conventional Commits)
+
+We follow the **Conventional Commits** specification to ensure clean and meaningful git history.
+*Chúng ta tuân thủ chuẩn **Conventional Commits** để đảm bảo lịch sử git rõ ràng và dễ theo dõi.*
+
+Commit messages must match the following pattern:
+*Tin nhắn commit bắt buộc phải có dạng:*
+
+```text
+<type>(<scope>): <description>
+
+# Example:
+# feat(posts): add create post controller endpoint
+# fix(auth): resolve JWT expiration validation bug
+```
+
+#### Allowed Types (Các loại commit được chấp nhận):
+- `feat`: A new feature (Tính năng mới)
+- `fix`: A bug fix (Sửa lỗi)
+- `docs`: Documentation changes (Thay đổi tài liệu)
+- `style`: Changes that do not affect the meaning of the code (formatting, missing semicolons, etc.)
+- `refactor`: A code change that neither fixes a bug nor adds a feature (Tái cấu trúc code)
+- `perf`: A code change that improves performance (Tối ưu hiệu năng)
+- `test`: Adding missing tests or correcting existing tests (Viết thêm/sửa test)
+- `build`: Changes that affect the build system or external dependencies (Cập nhật dependencies, build tools...)
+- `ci`: Changes to our CI configuration files and scripts (Cấu hình CI/CD)
+- `chore`: Other changes that don't modify src or test files (Thay đổi linh tinh khác)
+- `revert`: Reverts a previous commit (Hoàn tác commit trước đó)
+
+If a commit message does not conform to this specification, the commit will be blocked by `commitlint` automatically.
+*Nếu tin nhắn commit không khớp với chuẩn trên, `commitlint` sẽ tự động chặn việc commit.*
+
 ## Deployment
 
 When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
