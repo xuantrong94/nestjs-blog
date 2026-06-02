@@ -40,11 +40,11 @@ export class PostsController {
 
 ## Task checklist
 
-- [ ] Install dependencies (typeorm, pg, class-validator, class-transformer, `bcrypt, jsonwebtoken)
-- [ ] Tạo `src/posts/posts.controller.ts` với CRUD endpoints
-- [ ] Tạo `src/posts/posts.service.ts` với mock data array
-- [ ] Tạo `src/posts/posts.module.ts`
-- [ ] Update `src/app.module.ts` import PostsModule
+- [x] Install dependencies (typeorm, pg, class-validator, class-transformer, `bcrypt, jsonwebtoken)
+- [x] Tạo `src/posts/posts.controller.ts` với CRUD endpoints
+- [x] Tạo `src/posts/posts.service.ts` với mock data array
+- [x] Tạo `src/posts/posts.module.ts`
+- [x] Update `src/app.module.ts` import PostsModule
 
 ## Files cần tạo
 
