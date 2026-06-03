@@ -1,52 +1,56 @@
 # Step 3: Modules
 
 ## Mục tiêu
+
 - Hiểu cách tổ chức code theo feature modules
 - So sánh với cách tổ chức router files trong Express
 
 ## Kiến thức mới
 
 ### Express.js - không có Module
+
 ```typescript
 // routes/users.js
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 module.exports = router;
 
 // app.js
-const usersRouter = require('./routes/users');
-app.use('/users', usersRouter);
+const usersRouter = require("./routes/users");
+app.use("/users", usersRouter);
 ```
 
 ### NestJS - Module system
+
 ```typescript
 @Module({
-  imports: [DatabaseModule],      // Module khác cần dùng
-  controllers: [PostsController],  // Routes trong module
-  providers: [PostsService],     // Services/Providers
-  exports: [PostsService],        // Chia sẽ với module khác
+  imports: [DatabaseModule], // Module khác cần dùng
+  controllers: [PostsController], // Routes trong module
+  providers: [PostsService], // Services/Providers
+  exports: [PostsService], // Chia sẽ với module khác
 })
 export class PostsModule {}
 ```
 
 ### Module decorator properties
 
-| Property | Mô tả |
-|----------|-------|
-| `imports` | Module khác cần dùng (không bắt buộc) |
-| `controllers` | Controllers xử lý routes (không bắt buộc) |
-| `providers` | Services/Providers (không bắt buộc) |
-| `exports` | Chia sẽ providers với module khác (không bắt buộc) |
+| Property      | Mô tả                                              |
+| ------------- | -------------------------------------------------- |
+| `imports`     | Module khác cần dùng (không bắt buộc)              |
+| `controllers` | Controllers xử lý routes (không bắt buộc)          |
+| `providers`   | Services/Providers (không bắt buộc)                |
+| `exports`     | Chia sẽ providers với module khác (không bắt buộc) |
 
 ## Task checklist
 
 - [x] Đã làm ở Step 1: Tạo posts.module.ts
-- [ ] Tạo users.module.ts (empty structure, implement ở step sau)
-- [ ] Update app.module.ts import PostsModule
+- [x] Tạo users.module.ts (empty structure, implement ở step sau)
+- [x] Update app.module.ts import PostsModule
 
 ## Files cần tạo
 
 ### src/users/users.module.ts
+
 ```typescript
 @Module({
   controllers: [],
@@ -56,6 +60,7 @@ export class UsersModule {}
 ```
 
 ### src/app.module.ts (updated)
+
 ```typescript
 @Module({
   imports: [PostsModule, UsersModule],
@@ -81,12 +86,12 @@ src/
 
 ## So sánh
 
-| Express | NestJS |
-|---------|--------|
-| Router files | Feature modules |
+| Express                          | NestJS                                        |
+| -------------------------------- | --------------------------------------------- |
+| Router files                     | Feature modules                               |
 | `app.use('/posts', postsRouter)` | `@Module({ controllers: [PostsController] })` |
-| Phải import từng router | Import entire module |
-| Loose organization | Strict structure (controller/service/entity) |
+| Phải import từng router          | Import entire module                          |
+| Loose organization               | Strict structure (controller/service/entity)  |
 
 ## Quy tắc Module
 
