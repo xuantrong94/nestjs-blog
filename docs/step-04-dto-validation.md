@@ -41,10 +41,10 @@ export class CreatePostDto {
 
 ## Task checklist
 
-- [ ] Tạo `src/posts/dto/create-post.dto.ts`
-- [ ] Tạo `src/posts/dto/update-post.dto.ts`
-- [ ] Enable ValidationPipe in main.ts
-- [ ] Apply DTOs vào controller methods
+- [x] Tạo `src/posts/dto/create-post.dto.ts`
+- [x] Tạo `src/posts/dto/update-post.dto.ts`
+- [x] Enable ValidationPipe in main.ts
+- [x] Apply DTOs vào controller methods
 
 ## Files cần tạo
 
