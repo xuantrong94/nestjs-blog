@@ -1,5 +1,7 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
-import type { CreatePost, Post } from "./types";
+import type { Post } from "./types";
+import { CreatePostDto } from "./dto/create-post.dto";
+import { UpdatePostDto } from "./dto/update-post.dto";
 
 @Injectable()
 export class PostsService {
@@ -26,13 +28,13 @@ export class PostsService {
     return post;
   }
 
-  create(data: CreatePost): Post {
+  create(data: CreatePostDto): Post {
     const newPost = { id: Date.now(), ...data };
     this.posts.push(newPost);
     return newPost;
   }
 
-  update(id: number, data: Post): Post {
+  update(id: number, data: UpdatePostDto): Post {
     const index = this.posts.findIndex((p) => p.id === id);
     if (index !== -1) {
       this.posts[index] = { ...this.posts[index], ...data };
