@@ -8,7 +8,7 @@ import {
   Put,
   ValidationPipe,
 } from "@nestjs/common";
-import type { Post as PostType } from "./types";
+import { Post as PostEntity } from "./entities/post.entity";
 import { PostsService } from "./posts.service";
 import { CreatePostDto } from "./dto/create-post.dto";
 import { UpdatePostDto } from "./dto/update-post.dto";
@@ -17,17 +17,19 @@ import { UpdatePostDto } from "./dto/update-post.dto";
 export class PostsController {
   constructor(private readonly postsService: PostsService) {}
   @Get()
-  findAll(): PostType[] {
+  findAll(): Promise<PostEntity[]> {
     return this.postsService.findAll();
   }
 
   @Get(":id")
-  findOne(@Param("id") id: string) {
+  findOne(@Param("id") id: string): Promise<PostEntity> {
     return this.postsService.findOne(+id);
   }
 
   @Post()
-  create(@Body(ValidationPipe) createPostDto: CreatePostDto): PostType {
+  create(
+    @Body(ValidationPipe) createPostDto: CreatePostDto
+  ): Promise<PostEntity> {
     return this.postsService.create(createPostDto);
   }
 
@@ -35,12 +37,12 @@ export class PostsController {
   update(
     @Param("id") id: string,
     @Body(ValidationPipe) updatePostDto: UpdatePostDto
-  ): PostType {
+  ): Promise<PostEntity> {
     return this.postsService.update(+id, updatePostDto);
   }
 
   @Delete(":id")
-  delete(@Param("id") id: string): PostType {
+  delete(@Param("id") id: string): Promise<PostEntity> {
     return this.postsService.delete(+id);
   }
 }
