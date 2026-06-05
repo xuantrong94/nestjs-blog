@@ -123,12 +123,12 @@ export class UsersService {
 
 ## Task checklist
 
-- [ ] Setup PostgreSQL (Docker)
-- [ ] Configure TypeORM in app.module.ts
-- [ ] Tạo `src/users/entities/user.entity.ts`
-- [ ] Tạo `src/posts/entities/post.entity.ts`
-- [ ] Update PostsService dùng Repository
-- [ ] Update UsersService dùng Repository
+- [x] Setup PostgreSQL (Docker)
+- [x] Configure TypeORM in app.module.ts
+- [x] Tạo `src/users/entities/user.entity.ts`
+- [x] Tạo `src/posts/entities/post.entity.ts`
+- [x] Update PostsService dùng Repository
+- [x] Update UsersService dùng Repository
 
 ## Column types
 
